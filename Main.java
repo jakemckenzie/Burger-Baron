@@ -507,11 +507,17 @@ public class Main {
 
     private static BufferedWriter bufferedWriter;
 
+    private static String line;
+
+    private static Burger burger;
+
     public Main() {
 
 	ordCnt = 0;
 
 	bufferedWriter = null;
+
+	burger = null;
 	
     };
     
@@ -535,7 +541,7 @@ public class Main {
 
 	while (bufferReader.ready()) {
 
-	    String line = bufferReader.readLine();
+	    line = bufferReader.readLine();
 
 	    parseLine(line);
 
@@ -547,9 +553,7 @@ public class Main {
 
     public void parseLine(String line) throws IOException {
 
-	boolean theWorks = false;
-
-	Burger burger = null;
+	boolean theWorks = false;	
 
 	int pattyCount = 1;
 
@@ -563,11 +567,11 @@ public class Main {
 
 	Matcher veggieMatcher2 = veggiePattern2.matcher(line);
 
-	Pattern veggiePattern3 = Pattern.compile("\\bBaron Veggie Burger\\b");
+	//Pattern veggiePattern3 = Pattern.compile("\\bBaron Veggie Burger\\b");
 
-	Matcher veggieMatcher3 = veggiePattern3.matcher(line);
+	//Matcher veggieMatcher3 = veggiePattern3.matcher(line);
 
-	if (veggieMatcher1.find() || veggieMatcher2.find() || veggieMatcher3.find()) pattyType = "Veggie";
+	if (veggieMatcher1.find() || veggieMatcher2.find()) pattyType = "Veggie";
 	
 	Pattern chickenPattern1 = Pattern.compile("\\bChicken Burger\\b");
 
@@ -577,11 +581,11 @@ public class Main {
 
 	Matcher chickenMatcher2 = chickenPattern2.matcher(line);
 
-	Pattern chickenPattern3 = Pattern.compile("\\bBaron Chicken Burger\\b");
+	//Pattern chickenPattern3 = Pattern.compile("\\bBaron Chicken Burger\\b");
 
-	Matcher chickenMatcher3 = chickenPattern3.matcher(line);
+	//Matcher chickenMatcher3 = chickenPattern3.matcher(line);
 
-	if (chickenMatcher1.find() || chickenMatcher2.find() || chickenMatcher3.find()) pattyType = "Chicken";
+	if (chickenMatcher1.find() || chickenMatcher2.find()) pattyType = "Chicken";
 
 	Pattern doublePattern = Pattern.compile("\\bDouble\\b");
 
@@ -602,8 +606,6 @@ public class Main {
 	if (baronBurgerMatcher.find()) theWorks = true;
 
 	ArrayList<String> tokens = new ArrayList<String>(Arrays.asList(line.split(" ")));
-
-	//if (line.contains("Baron Burger")) theWorks = true;
 	
 	burger = new Burger(theWorks);
 
@@ -618,9 +620,9 @@ public class Main {
 
 		for (int j = i + 2; j < tokens.size(); j++) {
 
-		    burger.removeCategory(tokens.get(j));
-
 		    burger.removeIngredient(tokens.get(j));
+		    
+		    burger.removeCategory(tokens.get(j));		    
 			
 		    if (tokens.get(j).equals("but")) {
 
@@ -644,15 +646,11 @@ public class Main {
 
 		    }
 
-		    if (checkCategory(tokens.get(j))) {
+		    if (checkCategory(tokens.get(j))) burger.addCategory(tokens.get(j));
 
-			burger.addCategory(tokens.get(j));
+		    if (!checkCategory(tokens.get(j))) burger.addIngredient(tokens.get(j).toString());
 			    
-		    } else {
-			    
-			burger.addIngredient(tokens.get(j).toString());
-			    
-		    }
+		    
 			
 		}
 		
@@ -660,6 +658,15 @@ public class Main {
 	    
 	}
 
+	writeFile(line, burger);
+	
+    }
+
+    public static boolean checkCategory(final String string) {
+        return (string.equals("Cheese")||string.equals("Sauce")||string.equals("Veggies"));
+    }
+
+    public void writeFile(String line, Burger burger) throws IOException {
 	try {
 
 	    bufferedWriter = new BufferedWriter(new FileWriter(new File("test2.txt"),true));
@@ -676,11 +683,6 @@ public class Main {
 	bufferedWriter.newLine();
 
 	bufferedWriter.flush();
-	
-    }
-
-    public static boolean checkCategory(final String string) {
-        return (string.equals("Cheese")||string.equals("Sauce")||string.equals("Veggies"));
     }
 
     public static void main(String[] args) throws IOException {
