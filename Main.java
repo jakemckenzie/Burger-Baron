@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 class MyStack<Type> {
     
     private static class Node <Type> {
@@ -553,54 +555,58 @@ public class Main {
 
 	String pattyType = "Beef";
 
-	//String[] tokens = line.split(" ");
+	Pattern veggiePattern = Pattern.compile("\\bVeggie Burger\\b");
+
+	Matcher veggieMatcher = veggiePattern.matcher(line);
+
+	if (veggieMatcher.find()) pattyType = "Veggie";
+	
+	Pattern chickenPattern = Pattern.compile("\\bChicken Burger\\b");
+
+	Matcher chickenMatcher = chickenPattern.matcher(line);
+
+	if (chickenMatcher.find()) pattyType = "Chicken";
+
+	Pattern doublePattern = Pattern.compile("\\bDouble\\b");
+
+	Matcher doubleMathcher = doublePattern.matcher(line);
+
+	if (doubleMathcher.find()) pattyCount = 2;
+
+	Pattern triplePattern = Pattern.compile("\\bTriple\\b");
+
+	Matcher tripleMathcher = triplePattern.matcher(line);
+
+	if (tripleMathcher.find()) pattyCount = 3;
 
 	ArrayList<String> tokens = new ArrayList<String>(Arrays.asList(line.split(" ")));
+
+	if (line.contains("Baron Burger")) theWorks = true;
 	
-	for (String token : tokens) {
-
-	    
-
-	    if (token.contains("Double")) pattyCount = 2;
-
-	    if (token.contains("Triple")) pattyCount = 3;
-	    
-	    if (token.contains("Baron")) theWorks = true;
-
-	    if ((token.contains("Veggie") || token.contains("Chicken")) && !(token.contains("Veggies"))) {
-
-		System.out.println(token);
-		
-		pattyType = token;
-
-	    }
-
-	}
-
 	burger = new Burger(theWorks);
 
 	for (int i = 1; i < pattyCount; i++) burger.addPatty();
 
 	burger.changePatties(pattyType);
-	/*
+	
 	label:
-	for (int i = 0; i < tokens.length; i++) {
+	for (int i = 0; i < tokens.size(); i++) {
 
-	    if (tokens[i].equals("with")) {
+	    if (tokens.get(i).equals("with")) {
 
-		if (tokens[i + 1].equals("no")) {
+		if (tokens.get(i + 1).equals("no")) {
 
-		    for (int j = i + 2; j < tokens.length; j++) {
+		    for (int j = i + 2; j < tokens.size(); j++) {
 
-			burger.removeCategory(tokens[j]);
+			burger.removeCategory(tokens.get(j));
 
-			burger.removeIngredient(tokens[j]);
+			burger.removeIngredient(tokens.get(j));
 			
-			if (tokens[j].equals("but")) {
+			if (tokens.get(j).equals("but")) {
 
-			    for (int k = j + 1; k < tokens.length; k++) {
+			    for (int k = j + 1; k < tokens.size(); k++) {
 
-				burger.addIngredient(tokens[k].toString());
+				burger.addIngredient(tokens.get(k).toString());
 
 			    }
 
@@ -612,13 +618,13 @@ public class Main {
 
 		} else {
 
-		    for (int j = i + 1; j < tokens.length; j++) {
+		    for (int j = i + 1; j < tokens.size(); j++) {
 
-			if (tokens[j].equals("but")) {
+			if (tokens.get(j).equals("but")) {
 
-			    for (int k = j + 2; k < tokens.length; k++) {
+			    for (int k = j + 2; k < tokens.size(); k++) {
 
-				burger.removeIngredient(tokens[k].toString());
+				burger.removeIngredient(tokens.get(k).toString());
 
 			    }
 
@@ -626,15 +632,15 @@ public class Main {
 
 			}
 
-			if (tokens[j].equals("Sauce") ||
-			    tokens[j].equals("Cheese")||
-			    tokens[j].equals("Veggies")) {
+			if (tokens.get(j).equals("Sauce") ||
+			    tokens.get(j).equals("Cheese")||
+			    tokens.get(j).equals("Veggies")) {
 
-			    burger.addCategory(tokens[j]);
+			    burger.addCategory(tokens.get(j));
 			    
 			} else {
 			    
-			    burger.addIngredient(tokens[j].toString());
+			    burger.addIngredient(tokens.get(j).toString());
 			    
 			}
 			
@@ -644,55 +650,7 @@ public class Main {
 		
 	    }
 	    
-	}*/
-
-	int with = 0;
-        int but = 0;
-
-	if (tokens.contains("with")) with = tokens.indexOf("with"); 
-
-	if (tokens.contains("but")) with = tokens.indexOf("but");
-	//if (tokens.indexOf("but")) but = i;
-				       /*for (int i = 0; i < tokens.size(); i++) {
-
-	    //if (tokens[i].equals("with")) with = i;
-
-	    if (tokens.indexOf("with")) with = i;
-
-	    //if (tokens[i].equals("but")) but = i;
-
-	    if (tokens.indexOf("but")) but = i;
-        }*/
-        
-        if (with > 0) {
-            int end = tokens.size();
-            if (but > 0) end = but;
-            for (int i = with; i < end; i++) {
-                final boolean cat = isCategory(tokens.get(i));
-                if (cat) {
-                    if (theWorks) {
-                        burger.removeCategory(tokens.get(i));
-                    } else {
-                        burger.addCategory(tokens.get(i));
-                    }
-                } else {
-                    if (theWorks) {
-                        burger.removeIngredient(tokens.get(i));
-                    } else {
-                        burger.addIngredient(tokens.get(i));
-                    }
-                }
-            }
-        }
-        if (but > 0) {
-            for (int i = but; i < tokens.size(); i++) {
-                if (theWorks) {
-                    burger.addIngredient(tokens.get(i));
-                } else {
-                    burger.removeIngredient(tokens.get(i));
-                }
-            }
-}
+	}
 
 	try {
 
