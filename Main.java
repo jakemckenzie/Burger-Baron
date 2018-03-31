@@ -555,17 +555,33 @@ public class Main {
 
 	String pattyType = "Beef";
 
-	Pattern veggiePattern = Pattern.compile("\\bVeggie Burger\\b");
+	Pattern veggiePattern1 = Pattern.compile("\\bVeggie Burger\\b");
 
-	Matcher veggieMatcher = veggiePattern.matcher(line);
+	Matcher veggieMatcher1 = veggiePattern1.matcher(line);
 
-	if (veggieMatcher.find()) pattyType = "Veggie";
+	Pattern veggiePattern2 = Pattern.compile("\\bVeggie Baron Burger\\b");
+
+	Matcher veggieMatcher2 = veggiePattern2.matcher(line);
+
+	Pattern veggiePattern3 = Pattern.compile("\\bBaron Veggie Burger\\b");
+
+	Matcher veggieMatcher3 = veggiePattern3.matcher(line);
+
+	if (veggieMatcher1.find() || veggieMatcher2.find() || veggieMatcher3.find()) pattyType = "Veggie";
 	
-	Pattern chickenPattern = Pattern.compile("\\bChicken Burger\\b");
+	Pattern chickenPattern1 = Pattern.compile("\\bChicken Burger\\b");
 
-	Matcher chickenMatcher = chickenPattern.matcher(line);
+	Matcher chickenMatcher1 = chickenPattern1.matcher(line);
 
-	if (chickenMatcher.find()) pattyType = "Chicken";
+	Pattern chickenPattern2 = Pattern.compile("\\bChicken Baron Burger\\b");
+
+	Matcher chickenMatcher2 = chickenPattern2.matcher(line);
+
+	Pattern chickenPattern3 = Pattern.compile("\\bBaron Chicken Burger\\b");
+
+	Matcher chickenMatcher3 = chickenPattern3.matcher(line);
+
+	if (chickenMatcher1.find() || chickenMatcher2.find() || chickenMatcher3.find()) pattyType = "Chicken";
 
 	Pattern doublePattern = Pattern.compile("\\bDouble\\b");
 
@@ -579,9 +595,15 @@ public class Main {
 
 	if (tripleMathcher.find()) pattyCount = 3;
 
+	Pattern baronBurgerPattern = Pattern.compile("\\bBaron Burger\\b");
+
+	Matcher baronBurgerMatcher = baronBurgerPattern.matcher(line);
+
+	if (baronBurgerMatcher.find()) theWorks = true;
+
 	ArrayList<String> tokens = new ArrayList<String>(Arrays.asList(line.split(" ")));
 
-	if (line.contains("Baron Burger")) theWorks = true;
+	//if (line.contains("Baron Burger")) theWorks = true;
 	
 	burger = new Burger(theWorks);
 
@@ -592,60 +614,46 @@ public class Main {
 	label:
 	for (int i = 0; i < tokens.size(); i++) {
 
-	    if (tokens.get(i).equals("with")) {
+	    if (tokens.get(i).equals("with") && tokens.get(i + 1).equals("no")) {
 
-		if (tokens.get(i + 1).equals("no")) {
+		for (int j = i + 2; j < tokens.size(); j++) {
 
-		    for (int j = i + 2; j < tokens.size(); j++) {
+		    burger.removeCategory(tokens.get(j));
 
-			burger.removeCategory(tokens.get(j));
-
-			burger.removeIngredient(tokens.get(j));
+		    burger.removeIngredient(tokens.get(j));
 			
-			if (tokens.get(j).equals("but")) {
+		    if (tokens.get(j).equals("but")) {
 
-			    for (int k = j + 1; k < tokens.size(); k++) {
+			for (int k = j + 1; k < tokens.size(); k++) burger.addIngredient(tokens.get(k).toString());
 
-				burger.addIngredient(tokens.get(k).toString());
+			break label;
 
-			    }
-
-			    break label;
-
-			}
+		    }
 			
+		}
+		
+	    } else if (tokens.get(i).equals("with")) {
+
+		for (int j = i + 1; j < tokens.size(); j++) {
+
+		    if (tokens.get(j).equals("but")) {
+
+			for (int k = j + 2; k < tokens.size(); k++) burger.removeIngredient(tokens.get(k).toString());
+
+			break label;
+
 		    }
 
-		} else {
+		    if (checkCategory(tokens.get(j))) {
 
-		    for (int j = i + 1; j < tokens.size(); j++) {
-
-			if (tokens.get(j).equals("but")) {
-
-			    for (int k = j + 2; k < tokens.size(); k++) {
-
-				burger.removeIngredient(tokens.get(k).toString());
-
-			    }
-
-			    break label;
-
-			}
-
-			if (tokens.get(j).equals("Sauce") ||
-			    tokens.get(j).equals("Cheese")||
-			    tokens.get(j).equals("Veggies")) {
-
-			    burger.addCategory(tokens.get(j));
+			burger.addCategory(tokens.get(j));
 			    
-			} else {
+		    } else {
 			    
-			    burger.addIngredient(tokens.get(j).toString());
+			burger.addIngredient(tokens.get(j).toString());
 			    
-			}
-			
 		    }
-		    
+			
 		}
 		
 	    }
@@ -671,9 +679,8 @@ public class Main {
 	
     }
 
-    public static boolean isCategory(final String theString) {
-        return "Cheese".equals(theString) || "Veggies".equals(theString) 
-	    || "Sauce".equals(theString);
+    public static boolean checkCategory(final String string) {
+        return (string.equals("Cheese")||string.equals("Sauce")||string.equals("Veggies"));
     }
 
     public static void main(String[] args) throws IOException {
