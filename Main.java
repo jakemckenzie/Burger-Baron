@@ -524,7 +524,7 @@ public class Main {
 	
     };
     
-    public static void testMyStack() {
+    public void testMyStack() {
         
         String string = "Call me Ishmael. Some years ago- never mind how long precisely-"+
 	    "having little or no money in my purse, and nothing particular to interest me on shore,"+
@@ -692,9 +692,9 @@ public class Main {
 
 	MyStack<Integer> intStack = new MyStack<Integer>();
 
-	ArrayList<Integer> list = new ArrayList<Integer>();
+	ArrayList<Integer> urn = new ArrayList<Integer>();
 
-	for (int i = 1; i < 11; i++) list.add(new Integer(i));
+	for (int i = 1; i < 11; i++) urn.add(new Integer(i));
 
 	Collections.shuffle(list);
 
@@ -704,17 +704,68 @@ public class Main {
 
 	System.out.println();
 
-	for (int i = 0; i < 10; i++) {
+	while (!intStack.isEmpty()) {
 
-	    System.out.println(intStack.peek());
+	    System.out.println(intStack.peek().toString());
 
 	    intStack.pop();
 
 	}
-	    
+
+	MyStack<String> testSize = new MyStack<String>();
+
+	System.out.println("\nAfter initialization I expect the size of MyStack<String> testSize to be zero and it is: " + testSize.size());
+	testSize.push("Test");
+
+	System.out.println("\nAfter push I expect the size of MyStack<String> testSize to be one and it is: " + testSize.size());
+	testSize.pop();
+	
+	System.out.println("\nAfter pop I expect the size of MyStack<String> testSize to be zero and it is: " + testSize.size());
+	
     }
 
     public void testBurger() {
+
+	ArrayList<String> ingredientsUrn = new ArrayList<String>(Arrays.asList("Pickle",
+									    "Mayonnaise",
+									    "Baron-Sauce",
+									    "Lettuce",
+									    "Tomato",
+									    "Onions",
+									    "Pepperjack",
+									    "Mozzarella",
+									    "Cheddar",
+									    "Mushrooms",
+									    "Mustard",
+									    "Ketchup"));
+	
+	ArrayList<String> categoriesUrn = new ArrayList<String>(Arrays.asList("Sauce".
+									   "Cheese",
+									   "Veggies".));
+
+	ArrayList<String> pattiesUrn = new ArrayList<String>(Arrays.asList("Chicken",
+									   "Veggie"));
+
+	ArrayList<String> cntPattyUrn = new ArrayList<String>(Arrays.asList("Double",
+									    "Veggie"));
+
+	Collections.shuffle(ingredientsUrn);
+							     
+	Collections.shuffle(categoriesUrn);
+
+	Collections.shuffle(pattiesUrn);
+
+	Collections.shuffle(cntPattyUrn);
+
+	for(int i = 0; i < 12; i++) {
+
+	    StringBuilder string = new StringBuilder();
+
+	    for (int i = 0; i < 2; i++) {
+
+		string.append();
+	    }
+	}
 	
     }
 
@@ -872,7 +923,7 @@ public class Main {
 
 	test.parseFile("test.txt");
 
-	testMyStack();
+	test.testMyStack();
     }
 
 }
