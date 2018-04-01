@@ -696,11 +696,11 @@ public class Main {
 
 	for (int i = 1; i < 11; i++) urn.add(new Integer(i));
 
-	Collections.shuffle(list);
+	Collections.shuffle(urn);
 
-	for (int i = 0; i < 10; i++) intStack.push(list.get(i));
+	for (int i = 0; i < 10; i++) intStack.push(urn.get(i));
 
-	for (int i = 0; i < 10; i++) System.out.println(list.get(i));
+	for (int i = 0; i < 10; i++) System.out.println(urn.get(i));
 
 	System.out.println();
 
@@ -726,6 +726,10 @@ public class Main {
 
     public void testBurger() {
 
+    }
+
+    public void testParseLine() {
+
 	ArrayList<String> ingredientsUrn = new ArrayList<String>(Arrays.asList("Pickle",
 									    "Mayonnaise",
 									    "Baron-Sauce",
@@ -739,33 +743,150 @@ public class Main {
 									    "Mustard",
 									    "Ketchup"));
 	
-	ArrayList<String> categoriesUrn = new ArrayList<String>(Arrays.asList("Sauce".
+	ArrayList<String> categoriesUrn = new ArrayList<String>(Arrays.asList("Sauce",
 									      "Cheese",
-									      "Veggies".));
+									      "Veggies"));
 
 	ArrayList<String> pattiesUrn = new ArrayList<String>(Arrays.asList("Chicken",
-									   "Veggie"));
+									   "Veggie",
+									   ""));
 
 	ArrayList<String> cntPattyUrn = new ArrayList<String>(Arrays.asList("Double",
-									    "Triple"));
+									    "Triple"
+									    ,""));
+	
+	ArrayList<String> baronBurgerUrn = new ArrayList<String>(Arrays.asList("Baron Burger",
+									       "Burger"));
 
-	Collections.shuffle(ingredientsUrn);
-							     
-	Collections.shuffle(categoriesUrn);
+	System.out.println();
+	String s;
+	
+	for(int i = 0; i < 2; i++) {
 
-	Collections.shuffle(pattiesUrn);
+	    shuffleUrn(ingredientsUrn);
 
-	Collections.shuffle(cntPattyUrn);
+	    shuffleUrn(categoriesUrn);
 
-	for(int i = 0; i < 12; i++) {
+	    shuffleUrn(pattiesUrn);
+
+	    shuffleUrn(cntPattyUrn);
+
+	    shuffleUrn(baronBurgerUrn);
 
 	    StringBuilder string = new StringBuilder();
 
-	    for (int i = 0; i < 2; i++) {
+	    string.append(cntPattyUrn.get(i) + " " + pattiesUrn.get(i) + " " + baronBurgerUrn.get(i) + " with no " + ingredientsUrn.get(i) + " " + ingredientsUrn.get(i + 1) + " but " + ingredientsUrn.get(i + 2) + " " + ingredientsUrn.get(i + 3));
 
-		string.append();
-	    }
+	    s = string.toString();
+	    
+	    if (string.charAt(0) == ' ' || string.charAt(1) == ' ')  s = s.substring(1);
+
+	    s = s.replaceAll("\\s+", " ");
+	    
+	    System.out.println(s);
+
+	    parseLine(s);
+
+	    System.out.println();
+	    
 	}
+
+	for(int i = 0; i < 2; i++) {
+
+	    shuffleUrn(ingredientsUrn);
+
+	    shuffleUrn(categoriesUrn);
+
+	    shuffleUrn(pattiesUrn);
+
+	    shuffleUrn(cntPattyUrn);
+
+	    shuffleUrn(baronBurgerUrn);
+	    
+	    StringBuilder string = new StringBuilder();
+
+	    string.append(cntPattyUrn.get(i) + " " + pattiesUrn.get(i) + " " + baronBurgerUrn.get(i) + " with " + ingredientsUrn.get(i) + " " + ingredientsUrn.get(i + 1) + " but no " + ingredientsUrn.get(i + 2) + " " + ingredientsUrn.get(i + 3));
+	    s = string.toString();
+	    
+	    if (string.charAt(0) == ' '|| string.charAt(1) == ' ')  s = s.substring(1);
+
+	    s = s.replaceAll("\\s+", " ");
+	    
+	    System.out.println(s);
+
+	    parseLine(s);
+	    
+	    System.out.println();
+	    
+	}
+
+	for(int i = 0; i < 2; i++) {
+
+	    shuffleUrn(ingredientsUrn);
+
+	    shuffleUrn(categoriesUrn);
+
+	    shuffleUrn(pattiesUrn);
+
+	    shuffleUrn(cntPattyUrn);
+
+	    shuffleUrn(baronBurgerUrn);
+
+	    StringBuilder string = new StringBuilder();
+
+	    //String s;
+
+	    string.append(cntPattyUrn.get(i) + " " + pattiesUrn.get(i) + " " + baronBurgerUrn.get(i) + " with no " + categoriesUrn.get(i) + " but " + ingredientsUrn.get(i + 2) + " " + ingredientsUrn.get(i + 3));
+
+	    s = string.toString();
+	    
+	    if (string.charAt(0) == ' '|| string.charAt(1) == ' ')  s = s.substring(1);
+
+	    s = s.replaceAll("\\s+", " ");
+	    
+	    System.out.println(s);
+
+	    parseLine(s);
+	    
+	    System.out.println();
+	    
+	}
+
+	for(int i = 0; i < 2; i++) {
+
+	    shuffleUrn(ingredientsUrn);
+
+	    shuffleUrn(categoriesUrn);
+
+	    shuffleUrn(pattiesUrn);
+
+	    shuffleUrn(cntPattyUrn);
+
+	    shuffleUrn(baronBurgerUrn);
+
+	    StringBuilder string = new StringBuilder();
+
+	    string.append(cntPattyUrn.get(i) + " " + pattiesUrn.get(i) + " " + baronBurgerUrn.get(i) + " with " + categoriesUrn.get(i) + " but no " + ingredientsUrn.get(i + 2) + " " + ingredientsUrn.get(i + 3));
+
+	    s = string.toString();
+	    
+	    if (string.charAt(0) == ' '|| string.charAt(1) == ' ')  s = s.substring(1);
+
+	    s = s.replaceAll("\\s+", " ");
+	    
+	    System.out.println(s);
+
+	    parseLine(s);
+	    
+	    System.out.println();
+	    
+	}
+	
+    }
+
+    public void shuffleUrn(ArrayList<String> list) {
+
+	Collections.shuffle(list);
 	
     }
 
@@ -924,6 +1045,10 @@ public class Main {
 	test.parseFile("test.txt");
 
 	test.testMyStack();
+
+	test.testBurger()
+	
+	//test.testParseLine();
     }
 
 }
