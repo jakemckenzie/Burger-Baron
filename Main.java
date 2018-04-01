@@ -740,14 +740,14 @@ public class Main {
 									    "Ketchup"));
 	
 	ArrayList<String> categoriesUrn = new ArrayList<String>(Arrays.asList("Sauce".
-									   "Cheese",
-									   "Veggies".));
+									      "Cheese",
+									      "Veggies".));
 
 	ArrayList<String> pattiesUrn = new ArrayList<String>(Arrays.asList("Chicken",
 									   "Veggie"));
 
 	ArrayList<String> cntPattyUrn = new ArrayList<String>(Arrays.asList("Double",
-									    "Veggie"));
+									    "Triple"));
 
 	Collections.shuffle(ingredientsUrn);
 							     
