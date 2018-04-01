@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+
 class MyStack<Type> {
     
     private static class Node <Type> {
@@ -521,7 +522,171 @@ public class Main {
 	
     };
     
-    public void testMyStack() {
+    public static void testMyStack() {
+        
+        String string = "Call me Ishmael. Some years ago- never mind how long precisely-"+
+	    "having little or no money in my purse, and nothing particular to interest me on shore,"+
+	    "I thought I would sail about a little and see the watery part of the world. It is a way "+
+	    "I have of driving off the spleen and regulating the circulation.";
+	
+        ArrayList<String> testParse = new ArrayList<String>(Arrays.asList(string.split(" ")));
+
+	long startTime;
+	
+	long endTime;
+
+	long elapsedTime;
+
+	MyStack<String> testStack1 = new MyStack<>();
+
+	for (int i = 0; i < 56; i++) testStack1.push(testParse.get(timing));
+
+        System.out.println("Initializing a stack:");
+
+	for (int i = 0; i < 10; i++) {
+
+	    startTime = System.nanoTime();
+
+            MyStack<String> testStack2 = new MyStack<>();
+          
+            endTime = System.nanoTime();
+
+	    elapsedTime = endTime - startTime;
+
+            System.out.println(elapsedTime + " nanoseconds elapsed");
+        }
+
+	System.out.println("\nSize:");
+
+	for (int timing = 0; timing < 10; ++timing) {
+
+	    startTime = System.nanoTime();
+
+            testStack1.size();
+          
+            endTime = System.nanoTime();
+
+	    elapsedTime = endTime - startTime;
+
+            System.out.println(elapsedTime + " nanoseconds elapsed");
+
+	}
+
+	System.out.println("\nFirst method:");
+
+	for (int timing = 0; timing < 10; ++timing) {
+
+	    startTime = System.nanoTime();
+
+            testStack1.first();
+          
+            endTime = System.nanoTime();
+
+	    elapsedTime = endTime - startTime;
+
+            System.out.println(elapsedTime + " nanoseconds elapsed");
+
+	}
+
+	System.out.println("\nLast method:");
+
+	for (int timing = 0; timing < 10; ++timing) {
+
+	    startTime = System.nanoTime();
+
+            testStack1.last();
+          
+            endTime = System.nanoTime();
+
+	    elapsedTime = endTime - startTime;
+
+            System.out.println(elapsedTime + " nanoseconds elapsed");
+
+	}
+        
+        System.out.println("\nPush method:");
+
+	MyStack<String> testStack3 = new MyStack<>();
+
+	for (int timing = 0; timing < testStack1.size(); ++timing) {
+
+	    startTime = System.nanoTime();
+
+            testStack3.push(testParse.get(timing));
+          
+            endTime = System.nanoTime();
+
+	    elapsedTime = endTime - startTime;
+
+            System.out.println(elapsedTime + " nanoseconds elapsed");
+
+	}
+   
+        System.out.println("\nIsEmpty:");
+
+	for (int timing = 0; timing < 10; ++timing) {
+
+	    startTime = System.nanoTime();
+
+            testStack1.isEmpty();
+          
+            endTime = System.nanoTime();
+
+	    elapsedTime = endTime - startTime;
+
+            System.out.println(elapsedTime + " nanoseconds elapsed");
+
+	}
+	
+	System.out.println("\nPeek method:");
+
+	for (int timing = 0; timing < 10; ++timing) {
+
+	    startTime = System.nanoTime();
+
+            testStack1.peek();
+          
+            endTime = System.nanoTime();
+
+	    elapsedTime = endTime - startTime;
+
+            System.out.println(elapsedTime + " nanoseconds elapsed");
+
+	}
+
+	System.out.println("\nToString method:");
+
+	for (int timing = 0; timing < 10; ++timing) {
+
+	    startTime = System.nanoTime();
+
+            testStack1.toString();
+          
+            endTime = System.nanoTime();
+
+	    elapsedTime = endTime - startTime;
+
+            System.out.println(elapsedTime + " nanoseconds elapsed");
+
+	}
+
+	System.out.println("\nPop method:");
+
+	for (int timing = 0; timing < 10; ++timing) {
+
+	    startTime = System.nanoTime();
+
+            testStack1.pop();
+          
+            endTime = System.nanoTime();
+
+	    elapsedTime = endTime - startTime;
+
+            System.out.println(elapsedTime + " nanoseconds elapsed");
+
+	}
+
+	//System.out.println("\n");
 	
     }
 
@@ -690,6 +855,8 @@ public class Main {
 	Main test = new Main();
 
 	test.parseFile("test.txt");
+
+	testMyStack();
     }
 
 }
