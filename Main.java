@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.Random;
+import java.util.Collections;
 
 class MyStack<Type> {
     
@@ -539,7 +541,7 @@ public class Main {
 
 	MyStack<String> testStack1 = new MyStack<>();
 
-	for (int i = 0; i < 56; i++) testStack1.push(testParse.get(timing));
+	for (int i = 0; i < 56; i++) testStack1.push(testParse.get(i));
 
         System.out.println("Initializing a stack:");
 
@@ -558,7 +560,7 @@ public class Main {
 
 	System.out.println("\nSize:");
 
-	for (int timing = 0; timing < 10; ++timing) {
+	for (int i = 0; i < 10; i++) {
 
 	    startTime = System.nanoTime();
 
@@ -574,7 +576,7 @@ public class Main {
 
 	System.out.println("\nFirst method:");
 
-	for (int timing = 0; timing < 10; ++timing) {
+	for (int i = 0; i < 10; i++) {
 
 	    startTime = System.nanoTime();
 
@@ -590,7 +592,7 @@ public class Main {
 
 	System.out.println("\nLast method:");
 
-	for (int timing = 0; timing < 10; ++timing) {
+	for (int i = 0; i < 10; i++) {
 
 	    startTime = System.nanoTime();
 
@@ -608,23 +610,23 @@ public class Main {
 
 	MyStack<String> testStack3 = new MyStack<>();
 
-	for (int timing = 0; timing < testStack1.size(); ++timing) {
+	for (int i = 0; i < testStack1.size(); i++) {
 
 	    startTime = System.nanoTime();
 
-            testStack3.push(testParse.get(timing));
+            testStack3.push(testParse.get(i));
           
             endTime = System.nanoTime();
 
 	    elapsedTime = endTime - startTime;
 
-            System.out.println(elapsedTime + " nanoseconds elapsed");
+	    System.out.println(elapsedTime + " nanoseconds elapsed");
 
 	}
    
         System.out.println("\nIsEmpty:");
 
-	for (int timing = 0; timing < 10; ++timing) {
+	for (int i = 0; i < 10; i++) {
 
 	    startTime = System.nanoTime();
 
@@ -640,7 +642,7 @@ public class Main {
 	
 	System.out.println("\nPeek method:");
 
-	for (int timing = 0; timing < 10; ++timing) {
+	for (int i = 0; i < 10; i++) {
 
 	    startTime = System.nanoTime();
 
@@ -656,7 +658,7 @@ public class Main {
 
 	System.out.println("\nToString method:");
 
-	for (int timing = 0; timing < 10; ++timing) {
+	for (int i = 0; i < 10; i++) {
 
 	    startTime = System.nanoTime();
 
@@ -672,7 +674,7 @@ public class Main {
 
 	System.out.println("\nPop method:");
 
-	for (int timing = 0; timing < 10; ++timing) {
+	for (int i = 0; i < 10; i++) {
 
 	    startTime = System.nanoTime();
 
@@ -686,8 +688,30 @@ public class Main {
 
 	}
 
-	//System.out.println("\n");
-	
+	System.out.println("\nTest MyStack with (uniquely random) Integer type:");
+
+	MyStack<Integer> intStack = new MyStack<Integer>();
+
+	ArrayList<Integer> list = new ArrayList<Integer>();
+
+	for (int i = 1; i < 11; i++) list.add(new Integer(i));
+
+	Collections.shuffle(list);
+
+	for (int i = 0; i < 10; i++) intStack.push(list.get(i));
+
+	for (int i = 0; i < 10; i++) System.out.println(list.get(i));
+
+	System.out.println();
+
+	for (int i = 0; i < 10; i++) {
+
+	    System.out.println(intStack.peek());
+
+	    intStack.pop();
+
+	}
+	    
     }
 
     public void testBurger() {
@@ -732,10 +756,6 @@ public class Main {
 
 	Matcher veggieMatcher2 = veggiePattern2.matcher(line);
 
-	//Pattern veggiePattern3 = Pattern.compile("\\bBaron Veggie Burger\\b");
-
-	//Matcher veggieMatcher3 = veggiePattern3.matcher(line);
-
 	if (veggieMatcher1.find() || veggieMatcher2.find()) pattyType = "Veggie";
 	
 	Pattern chickenPattern1 = Pattern.compile("\\bChicken Burger\\b");
@@ -745,10 +765,6 @@ public class Main {
 	Pattern chickenPattern2 = Pattern.compile("\\bChicken Baron Burger\\b");
 
 	Matcher chickenMatcher2 = chickenPattern2.matcher(line);
-
-	//Pattern chickenPattern3 = Pattern.compile("\\bBaron Chicken Burger\\b");
-
-	//Matcher chickenMatcher3 = chickenPattern3.matcher(line);
 
 	if (chickenMatcher1.find() || chickenMatcher2.find()) pattyType = "Chicken";
 
