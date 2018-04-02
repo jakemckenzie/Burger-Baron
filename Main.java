@@ -504,6 +504,13 @@ class Burger {
 
 }
 
+/**
+ * The Main parses a line of text from an input file
+ * then outputs it to a text file.
+ * @author
+ * Jake McKenzie (jake314@uw.edu)
+ **/
+
 public class Main {
     
     private static int ordCnt;
@@ -526,9 +533,9 @@ public class Main {
     
     public void testMyStack() {
 
-	/*
+	/**
 	 * This is my base case test.
-	 */
+	 **/
 
 	System.out.println("\nTest MyStack with (uniquely random) Integer type:");
 
@@ -536,9 +543,9 @@ public class Main {
 
 	ArrayList<Integer> urn = new ArrayList<Integer>();
 
-	/*
+	/**
 	 * This is my check to see whether the stack is sufficiently generic.
-	 */
+	 **/
 
 	for (int i = 1; i < 11; i++) urn.add(new Integer(i));
 
@@ -568,10 +575,10 @@ public class Main {
 	
 	System.out.println("\nAfter pop I expect the size of MyStack<String> testSize to be zero and it is: " + testSize.size());
 
-	/*
+	/**
 	 * This is my test to see the run times of each method within MyStack.
 	 * todo: optimize push (sometimes there are unknown slowdowns)
-	 */
+	 **/
 	
         String string = "Call me Ishmael. Some years ago- never mind how long precisely-"+
 	    "having little or no money in my purse, and nothing particular to interest me on shore,"+
@@ -741,9 +748,9 @@ public class Main {
 
     public void testBurger() {
 
-	/*
+	/**
 	 * This is my base cases tests.
-	 */
+	 **/
 	
 	long startTime;
 	
@@ -796,6 +803,11 @@ public class Main {
 	System.out.println("\nThis should be a baron burger: " + "\n" + testTheWorks.toString());
 
 	System.out.println("\nThis should be a plain burger: " + "\n" + testPlain.toString() + "\n");
+	/**
+	 * Plain burger is the base case of my set and Baron Burger is my N-th case.
+	 * From these two cases I can make any burger that I need, but I need to see whether
+	 * I can initialize them properly.
+	 **/
 
 	for (int i = 0; i < 3; i++) {
 
@@ -816,6 +828,11 @@ public class Main {
 	    System.out.println("Testing removeCategory with " + categoriesUrn.get(i) + " and the output is: \n" + testTheWorks.toString() + "\n");
         
 	}
+
+	/**
+	 * Here are my speed tests for my burger class. I did not include all functions
+	 * because these are the workhorses of the burger class. 
+	 **/
 
 	System.out.println("\naddCategories():");
 	
@@ -899,6 +916,12 @@ public class Main {
     
     }
 
+    /**
+     * I wrote this for my own benefit. I don't know how to write a proper unit tests
+     * and would like. I attempted to hit most edge cases with this test and I think
+     * I hit many of them.
+     **/
+
     public void testParseLine() throws IOException {
 
 	ArrayList<String> ingredientsUrn = new ArrayList<String>(Arrays.asList("Pickle",
@@ -930,6 +953,7 @@ public class Main {
 									       "Burger"));
 
 	System.out.println();
+	
 	String s;
 	
 	for(int i = 0; i < 2; i++) {
@@ -1083,6 +1107,11 @@ public class Main {
 	
     }
 
+    /**
+     * @parseLine
+     * 
+     **/
+
     public void parseLine(String line) throws IOException {
 
 	boolean theWorks = false;	
@@ -1187,10 +1216,13 @@ public class Main {
     }
 
     public static boolean checkCategory(final String string) {
+
         return (string.equals("Cheese")||string.equals("Sauce")||string.equals("Veggies"));
+
     }
 
     public void writeFile(String line, Burger burger) throws IOException {
+
 	try {
 
 	    bufferedWriter = new BufferedWriter(new FileWriter(new File("test2.txt"),true));
