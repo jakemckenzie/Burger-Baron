@@ -715,6 +715,8 @@ public class Main {
 	    
 	}
 
+	System.out.println(line);
+
 	writeFile(line, burger);
 	
     }
