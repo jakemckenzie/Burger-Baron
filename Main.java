@@ -790,6 +790,16 @@ public class Main {
 	ArrayList<String> baronBurgerUrn = new ArrayList<String>(Arrays.asList("Baron Burger",
 									       "Burger"));
 
+	/**
+	 * Plain burger is the base case of my set and Baron Burger is my N-th case.
+	 * From these two cases I can make any burger that I need, but I need to see whether
+	 * I can initialize them properly.
+	 **/
+
+	System.out.println("\nThis should be a baron burger: " + "\n" + testTheWorks.toString());
+
+	System.out.println("\nThis should be a plain burger: " + "\n" + testPlain.toString() + "\n");
+
 	shuffleUrn(ingredientsUrn);
 
 	shuffleUrn(categoriesUrn);
@@ -799,16 +809,7 @@ public class Main {
 	shuffleUrn(cntPattyUrn);
 
 	shuffleUrn(baronBurgerUrn);
-
-	System.out.println("\nThis should be a baron burger: " + "\n" + testTheWorks.toString());
-
-	System.out.println("\nThis should be a plain burger: " + "\n" + testPlain.toString() + "\n");
-	/**
-	 * Plain burger is the base case of my set and Baron Burger is my N-th case.
-	 * From these two cases I can make any burger that I need, but I need to see whether
-	 * I can initialize them properly.
-	 **/
-
+	
 	for (int i = 0; i < 3; i++) {
 
 	    testPlain = new Burger(false);
@@ -833,6 +834,8 @@ public class Main {
 	 * Here are my speed tests for my burger class. I did not include all functions
 	 * because these are the workhorses of the burger class. 
 	 **/
+
+	System.out.println("Here are my speed tests for the Burger class:\n");
 
 	System.out.println("\naddCategories():");
 	
@@ -1109,7 +1112,12 @@ public class Main {
 
     /**
      * @parseLine
-     * 
+     * This parses a line parses takes a line from parseFile
+     * then creates a stack depending on the order given to it.
+     *
+     * Note: I haven't taken Java in two years and used this
+     * method to explore some of the newer features of
+     * Java.
      **/
 
     public void parseLine(String line) throws IOException {
@@ -1169,17 +1177,17 @@ public class Main {
 	label:
 	for (int i = 0; i < tokens.size(); i++) {
 
-	    if (tokens.get(i).equals("with") && tokens.get(i + 1).equals("no")) {
+	    if (tokens.get(i).equals("with") && !tokens.get(i + 1).equals("no")) {
 
-		for (int j = i + 2; j < tokens.size(); j++) {
+		for (int j = i + 1; j < tokens.size(); j++) {
 
-		    burger.removeIngredient(tokens.get(j));
+		    burger.addIngredient(tokens.get(j));
 		    
-		    burger.removeCategory(tokens.get(j));		    
+		    burger.addCategory(tokens.get(j));		    
 			
 		    if (tokens.get(j).equals("but")) {
 
-			for (int k = j + 1; k < tokens.size(); k++) burger.addIngredient(tokens.get(k).toString());
+			for (int k = j + 2; k < tokens.size(); k++) burger.removeIngredient(tokens.get(k));
 
 			break label;
 
@@ -1189,23 +1197,22 @@ public class Main {
 		
 	    } else if (tokens.get(i).equals("with")) {
 
-		for (int j = i + 1; j < tokens.size(); j++) {
+		for (int j = i + 2; j < tokens.size(); j++) {
 
 		    if (tokens.get(j).equals("but")) {
 
-			for (int k = j + 2; k < tokens.size(); k++) burger.removeIngredient(tokens.get(k).toString());
+			for (int k = j + 1; k < tokens.size(); k++) burger.addIngredient(tokens.get(k));
 
 			break label;
 
 		    }
 
-		    if (checkCategory(tokens.get(j))) burger.addCategory(tokens.get(j));
+		     burger.removeCategory(tokens.get(j));
 
-		    if (!checkCategory(tokens.get(j))) burger.addIngredient(tokens.get(j).toString());
-			    
-		    
-			
+		     burger.removeIngredient(tokens.get(j));
+			    	
 		}
+
 		
 	    }
 	    
