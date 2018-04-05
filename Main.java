@@ -334,7 +334,7 @@ public class Main {
 
 	System.out.println("Here are my speed tests for the Burger class:");
 
-	System.out.println("\naddCategories():");
+	System.out.println("\naddCategory():");
 	
 	for (int i = 0; i < 10; i++) {
 
@@ -354,7 +354,7 @@ public class Main {
 
 	}
 
-	System.out.println("\nremoveCategories():");
+	System.out.println("\nremoveCategory():");
 	
 	for (int i = 0; i < 10; i++) {
 
@@ -587,7 +587,7 @@ public class Main {
 
     public void parseFile(String filename) throws IOException {
 	
-	PrintWriter writer = new PrintWriter("test2.txt");
+	PrintWriter writer = new PrintWriter("trace.txt");
 
 	writer.print("");
 
@@ -715,9 +715,12 @@ public class Main {
 	    
 	}
 
-	System.out.println(line);
+	//System.out.println(line);
 
-	writeFile(line, burger);
+	System.out.println("Processing Order " + (ordCnt++) + ": " + line);
+	String s = burger.toString();
+	System.out.println("["+s+"]\n");
+	writeFile(line, s);
 	
     }
 
@@ -727,11 +730,11 @@ public class Main {
 
     }
 
-    public void writeFile(String line, Burger burger) throws IOException {
+    public void writeFile(String line, String s) throws IOException {
 
 	try {
 
-	    bufferedWriter = new BufferedWriter(new FileWriter(new File("test2.txt"),true));
+	    bufferedWriter = new BufferedWriter(new FileWriter(new File("trace.txt"),true));
 
 	} catch (IOException e) {
 
@@ -740,10 +743,12 @@ public class Main {
 	
 	bufferedWriter.write("Processing Order " + (ordCnt++) + ": " + line+"\n");
 
-	bufferedWriter.write("["+burger.toString()+"]\n");
+	//bufferedWriter.flush();
 
+	bufferedWriter.write("["+s+"]\n");
+	
 	bufferedWriter.newLine();
-
+	
 	bufferedWriter.flush();
     }
 
@@ -751,7 +756,7 @@ public class Main {
 
 	Main test = new Main();
 
-	test.parseFile("test.txt");
+	test.parseFile("customer.txt");
 
 	test.testMyStack();
 

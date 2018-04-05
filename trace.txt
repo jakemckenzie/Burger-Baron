@@ -1,0 +1,60 @@
+Processing Order 1: Burger
+[Bun, Beef, Bun]
+
+Processing Order 3: Baron Burger
+[Pickle, Bun, Mayonnaise, Baron-Sauce, Lettuce, Tomato, Onions, Pepperjack, Mozzarella, Cheddar, Beef, Mushrooms, Mustard, Ketchup, Bun]
+
+Processing Order 5: Chicken Baron Burger with Veggies but no Mayonnaise Baron-Sauce
+[Pickle, Bun, Lettuce, Tomato, Onions, Pepperjack, Mozzarella, Cheddar, Chicken, Mushrooms, Mustard, Ketchup, Bun]
+
+Processing Order 7: Double Chicken Burger with Baron-Sauce Tomato but no Cheddar Onions
+[Bun, Baron-Sauce, Tomato, Chicken, Chicken, Bun]
+
+Processing Order 9: Triple Baron Burger with Sauce but no Mozzarella Pickle
+[Bun, Mayonnaise, Baron-Sauce, Lettuce, Tomato, Onions, Beef, Beef, Pepperjack, Cheddar, Beef, Mushrooms, Mustard, Ketchup, Bun]
+
+Processing Order 11: Double Baron Burger with no Cheese but Mozzarella Onions
+[Pickle, Bun, Mayonnaise, Baron-Sauce, Lettuce, Tomato, Onions, Beef, Mozzarella, Beef, Mushrooms, Mustard, Ketchup, Bun]
+
+Processing Order 13: Triple Chicken Baron Burger with Veggies but no Mustard Mozzarella
+[Pickle, Bun, Mayonnaise, Baron-Sauce, Lettuce, Tomato, Onions, Chicken, Chicken, Pepperjack, Cheddar, Chicken, Mushrooms, Ketchup, Bun]
+
+Processing Order 15: Baron Burger with no Lettuce Mustard but Tomato Mushrooms
+[Pickle, Bun, Mayonnaise, Baron-Sauce, Tomato, Onions, Pepperjack, Mozzarella, Cheddar, Beef, Mushrooms, Ketchup, Bun]
+
+Processing Order 17: Triple Chicken Baron Burger with no Cheese but Mayonnaise Mustard
+[Pickle, Bun, Mayonnaise, Baron-Sauce, Lettuce, Tomato, Onions, Chicken, Chicken, Chicken, Mushrooms, Mustard, Ketchup, Bun]
+
+Processing Order 19: Triple Baron Burger with no Sauce but Lettuce Tomato
+[Pickle, Bun, Lettuce, Tomato, Onions, Beef, Beef, Pepperjack, Mozzarella, Cheddar, Beef, Mushrooms, Bun]
+
+Processing Order 21: Triple Burger with no Sauce but Mayonnaise Tomato
+[Bun, Mayonnaise, Tomato, Beef, Beef, Beef, Bun]
+
+Processing Order 23: Double Chicken Baron Burger with no Pepperjack Tomato but Ketchup Baron-Sauce
+[Pickle, Bun, Mayonnaise, Baron-Sauce, Lettuce, Onions, Chicken, Mozzarella, Cheddar, Chicken, Mushrooms, Mustard, Ketchup, Bun]
+
+Processing Order 25: Double Veggie Burger with Baron-Sauce Ketchup but no Mustard Pepperjack
+[Bun, Baron-Sauce, Veggie, Veggie, Ketchup, Bun]
+
+Processing Order 27: Double Baron Burger with no Mozzarella Onions but Pepperjack Ketchup
+[Pickle, Bun, Mayonnaise, Baron-Sauce, Lettuce, Tomato, Beef, Pepperjack, Cheddar, Beef, Mushrooms, Mustard, Ketchup, Bun]
+
+Processing Order 29: Triple Veggie Burger with Veggies but no Lettuce Baron-Sauce
+[Pickle, Bun, Tomato, Onions, Veggie, Veggie, Veggie, Mushrooms, Bun]
+
+Processing Order 31: Triple Chicken Burger with no Onions Lettuce but Mustard Mozzarella
+[Bun, Chicken, Chicken, Mozzarella, Chicken, Mustard, Bun]
+
+Processing Order 33: Double Veggie Burger with Mustard Mozzarella but no Pickle Mushrooms
+[Bun, Veggie, Mozzarella, Veggie, Mustard, Bun]
+
+Processing Order 35: Double Burger with Mushrooms Baron-Sauce but no Mayonnaise Mustard
+[Bun, Baron-Sauce, Beef, Beef, Mushrooms, Bun]
+
+Processing Order 37: Triple Chicken Baron Burger with Mayonnaise Mozzarella but no Lettuce Pepperjack
+[Pickle, Bun, Mayonnaise, Baron-Sauce, Tomato, Onions, Chicken, Chicken, Mozzarella, Cheddar, Chicken, Mushrooms, Mustard, Ketchup, Bun]
+
+Processing Order 39: Baron Burger with no Pickle Cheddar but Onions Mustard
+[Bun, Mayonnaise, Baron-Sauce, Lettuce, Tomato, Onions, Pepperjack, Mozzarella, Beef, Mushrooms, Mustard, Ketchup, Bun]
+
