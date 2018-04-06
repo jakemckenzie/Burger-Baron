@@ -73,6 +73,13 @@ public class Main {
 	/**
 	 * This is my test to see the run times of each method within MyStack.
 	 * todo: optimize push (sometimes there are unknown slowdowns)
+	 * 
+	 * https://stackoverflow.com/questions/180158/how-do-i-time-a-methods-execution-in-java
+	 * For the timing tests I used this post a lot.
+	 * 
+	 * https://codereview.stackexchange.com/questions/78221/stack-data-structure-unit-testing
+	 * for thinking about the testing I used this post a lot. It helped on
+	 * both testing the stack and my burger as I've never done unit testing.
 	 **/
 	
         String string = "Call me Ishmael. Some years ago- never mind how long precisely-"+
@@ -625,6 +632,12 @@ public class Main {
 
 	String pattyType = "Beef";
 
+	/**
+	 * https://stackoverflow.com/questions/26767866/java-pattern-matcher
+	 * I used this for parsing the line. I found it to be a really elegant way
+	 * of parsing the string.
+	 **/
+
 	Pattern veggiePattern1 = Pattern.compile("\\bVeggie Burger\\b");
 
 	Matcher veggieMatcher1 = veggiePattern1.matcher(line);
@@ -720,7 +733,7 @@ public class Main {
 	System.out.println("Processing Order " + (ordCnt++) + ": " + line);
 	String s = burger.toString();
 	System.out.println("["+s+"]\n");
-	writeFile(line, s);
+	//writeFile(line, s);
 	
     }
 
